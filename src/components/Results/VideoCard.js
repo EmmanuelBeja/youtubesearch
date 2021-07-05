@@ -29,7 +29,7 @@ const VideoCard = ({ data, handleRedirectToChannel }) => {
             </CardSubtitle>
             <CardText
               className="text-truncate"
-              onMouseDown={() => handleRedirectToChannel(data.snippet.channelTitle)}
+              onMouseDown={() => handleRedirectToChannel(data.snippet.channelId)}
             >
               By <b className="channel-name">{data.snippet.channelTitle}</b>
             </CardText>
