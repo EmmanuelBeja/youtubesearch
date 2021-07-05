@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { faCircleNotch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-const Search = ({ searches, handleClick }) => {
+const RecentSearches = ({ searches, handleClick }) => {
   const { loading } = useSelector((state) => state.search)
   const searchItem = searches
   searchItem.reverse()
@@ -31,4 +31,4 @@ const Search = ({ searches, handleClick }) => {
   )
 }
 
-export default Search
+export default RecentSearches

@@ -8,8 +8,6 @@ import { Container } from 'reactstrap'
 import Search from './components/Search'
 import Results from './components/Results'
 
-import './App.scss'
-
 const App = () => {
   return (
     <Provider store={store}>

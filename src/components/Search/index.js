@@ -43,7 +43,7 @@ const Search = () => {
   }
 
   return (
-    <Row>
+    <Row className="search-container">
       <Col
         lg={{ size: 6, offset: 3 }}
         md={{ size: 6, offset: 3 }}
