@@ -19,7 +19,7 @@ const Results = () => {
     window.open(`https://www.youtube.com/channel/${channelId}`)
 
   return (
-    <>
+    <div className="results-container">
       {loading ? (
         <Loading />
       ) : (
@@ -36,7 +36,7 @@ const Results = () => {
           {!results || (results.length === 0 && <NoDataIndication />)}
         </>
       )}
-    </>
+    </div>
   )
 }
 
