@@ -6,7 +6,7 @@ const ChannelCard = ({ data, handleRedirectToChannel }) => {
   return (
     <Card
       className="channel-card"
-      onMouseDown={() => handleRedirectToChannel(data.snippet.channelTitle)}
+      onMouseDown={() => handleRedirectToChannel(data.snippet.channelId)}
     >
       <CardBody>
         <Row>
