@@ -1,0 +1,37 @@
+.card {
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    background: whitesmoke;
+  }
+
+  &-subtitle {
+    color: grey;
+  }
+
+  .channel-name {
+    color: #2196f3;
+
+    &:hover {
+      color: #2196f3;
+    }
+  }
+}
+
+.channel-card {
+  border-bottom: 1px solid whitesmoke;
+  margin-bottom: 10px;
+
+  &__thumbnail {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+
+    &-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
