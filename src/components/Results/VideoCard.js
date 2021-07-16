@@ -1,7 +1,8 @@
 import React from 'react'
 
-import { Card, CardText, CardBody, CardTitle, CardImg, CardSubtitle, Row, Col } from 'reactstrap'
-import { faClock } from '@fortawesome/free-solid-svg-icons'
+import { Row, Col } from 'reactstrap'
+import { Card, CardMedia, Chip } from 'ui-neumorphism'
+import { faClock, faUser } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const VideoCard = ({ data, handleRedirectToChannel }) => {
@@ -12,30 +13,36 @@ const VideoCard = ({ data, handleRedirectToChannel }) => {
   const publishTime = new Date(snippet.publishTime).toLocaleString()
 
   return (
-    <Card onMouseDown={() => handleRedirectToVideo()}>
-      <CardBody>
+    <Col md="4" sm="6" xs="12" onMouseDown={() => handleRedirectToVideo()}>
+      <Card className="card" elevation={4}>
         <Row>
-          <Col md="4" sm="12" xs="12" className="">
-            <CardImg top width="100%" src={snippet.thumbnails.medium.url} alt="video thumbnail" />
+          <Col md="12" sm="12" xs="12" className="">
+            <CardMedia
+              className="card-image"
+              width="100%"
+              src={snippet.thumbnails.medium.url}
+              alt="video thumbnail"
+            />
           </Col>
-          <Col md="8" sm="12" xs="12" className="">
-            <CardTitle tag="h5" className="text-truncate">
-              {snippet.title}
-            </CardTitle>
-            <CardSubtitle>
-              <FontAwesomeIcon icon={faClock} /> {publishTime}
-            </CardSubtitle>
-            <CardText
-              className="text-truncate"
+          <Col md="12" sm="12" xs="12" className="card-content">
+            <h5 className="text-truncate">{snippet.title}</h5>
+
+            <div
+              className="text-truncate card-content__subtitle"
               onMouseDown={() => handleRedirectToChannel(snippet.channelId)}
             >
-              By <b className="channel-name">{snippet.channelTitle}</b>
-            </CardText>
-            <CardText>Description: {snippet.description}</CardText>
+              <Chip key="5" className="ma-3" prepend={<FontAwesomeIcon icon={faUser} />}>
+                <span className="channel-name">{snippet.channelTitle}</span>
+              </Chip>
+              <small className="card-subtitle">
+                <FontAwesomeIcon icon={faClock} /> {publishTime}
+              </small>
+            </div>
+            <p className="text-truncate">{snippet.description}</p>
           </Col>
         </Row>
-      </CardBody>
-    </Card>
+      </Card>
+    </Col>
   )
 }
 

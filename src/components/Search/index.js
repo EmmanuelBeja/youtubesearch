@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { Row, Col, InputGroup, InputGroupAddon, Input, Button } from 'reactstrap'
+import { Navbar, InputGroup, InputGroupAddon, Input } from 'reactstrap'
+import { useDebounce } from 'use-debounce'
 import { faSearch, faCircleNotch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { toast } from 'react-toastify'
@@ -15,68 +16,93 @@ const Search = () => {
   const dispatch = useDispatch()
   const { loading } = useSelector((state) => state.search)
 
-  const [searchValue, setSearchValue] = useState('')
+  const [searchInput, setSearchInput] = useState('')
+  const [debouncingText, setDebouncingText] = useState('')
+  const [debouncedText] = useDebounce(debouncingText, 2000)
   const [inputError, setInputError] = useState(false)
   const [searches, setSearches] = useState([])
 
   useEffect(() => {
-    searchValue && setInputError(false)
-  }, [searchValue])
+    debouncedText && handleSearch(debouncedText)
+  }, [debouncedText])
 
-  const handleSearch = () => {
-    if (!searchValue) {
+  const handleSearch = (input) => {
+    if (!input) {
       setInputError(true)
       toast.error('Please type something to search')
       return
     }
     // add searched item to recent searches
     const updatedSearches = searches
-    updatedSearches.push(searchValue)
+    updatedSearches.push(input)
+
     setSearches(updatedSearches)
-
-    dispatch(searchActions.getSearchResults(searchValue))
+    dispatch(searchActions.getSearchResults(input))
+    setInputError(false)
   }
-
-  const handleClickRecent = (item) => {
-    dispatch(searchActions.getSearchResults(item))
-    setSearchValue(item)
-  }
-
+  // {{ size: 6, offset: 3 }}
   return (
-    <Row className="search-container">
-      <Col
-        lg={{ size: 6, offset: 3 }}
-        md={{ size: 6, offset: 3 }}
-        sm="12"
-        xs="12"
-        className="search-section"
-      >
+    <Navbar color="light" light expand="md" className="fixed-top">
+      <div className="search-section">
         <InputGroup>
           <InputGroupAddon addonType="prepend">
-            <Button onClick={() => handleSearch()} outline disabled={loading}>
+            {loading ? (
+              <FontAwesomeIcon icon={faCircleNotch} pulse />
+            ) : (
               <FontAwesomeIcon icon={faSearch} />
-            </Button>
+            )}
           </InputGroupAddon>
           <Input
             className="form-control"
-            name="searchValue"
+            name="searchInput"
             placeholder="Type here..."
-            value={searchValue}
-            onChange={(e) => setSearchValue(e.target.value)}
+            value={searchInput}
+            onChange={(e) => {
+              setDebouncingText(e.target.value)
+              setSearchInput(e.target.value)
+            }}
             invalid={inputError}
             autoComplete="off"
           />
-          <InputGroupAddon addonType="append">
-            <Button onClick={() => handleSearch()} outline disabled={loading}>
-              {loading ? <FontAwesomeIcon icon={faCircleNotch} pulse /> : 'Submit'}
-            </Button>
-          </InputGroupAddon>
-
-          <RecentSearches searches={searches} handleClick={handleClickRecent} />
+          <RecentSearches searches={searches} handleClick={handleSearch} />
         </InputGroup>
-      </Col>
-    </Row>
+      </div>
+    </Navbar>
   )
 }
 
 export default Search
+
+// <Row>
+//   <Col
+//     lg="12"
+//     md="12"
+//     sm="12"
+//     xs="12"
+//     className="search-section shadow"
+//   >
+//     <InputGroup>
+//       <InputGroupAddon addonType="prepend">
+//         {loading ? (
+//           <FontAwesomeIcon icon={faCircleNotch} pulse />
+//         ) : (
+//           <FontAwesomeIcon icon={faSearch} />
+//         )}
+//       </InputGroupAddon>
+//       <Input
+//         className="form-control"
+//         name="searchInput"
+//         placeholder="Type here..."
+//         value={searchInput}
+//         onChange={(e) => {
+//           setDebouncingText(e.target.value)
+//           setSearchInput(e.target.value)
+//         }}
+//         invalid={inputError}
+//         autoComplete="off"
+//       />
+//
+//       <RecentSearches searches={searches} handleClick={handleSearch} />
+//     </InputGroup>
+//   </Col>
+// </Row>

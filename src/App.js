@@ -11,8 +11,8 @@ import Results from './components/Results'
 const App = () => {
   return (
     <Provider store={store}>
+      <Search />
       <Container className="app-container">
-        <Search />
         <Results />
       </Container>
       <ToastContainer />
