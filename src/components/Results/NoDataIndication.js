@@ -3,7 +3,11 @@ import React from 'react'
 const NoDataIndication = () => {
   return (
     <div className="text-center">
-      <img src="/void.svg" className="data-empty" alt="data empty" />
+      <img
+        src={`idk${Math.floor(Math.random() * 4 + 1)}.gif`}
+        className="data-empty"
+        alt="data empty"
+      />
       <br />
       <br />
       <h3>

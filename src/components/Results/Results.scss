@@ -1,37 +1,61 @@
-.card {
-  border: none;
-  cursor: pointer;
+.results-container {
+  margin-top: 80px;
 
-  &:hover {
-    background: whitesmoke;
-  }
+  .card {
+    border: none;
+    margin-bottom: 30px;
+    cursor: pointer;
 
-  &-subtitle {
-    color: grey;
-  }
+    &-image {
+      border-radius: 5px 5px 0px 0px !important;
+      height: 165px !important;
+    }
 
-  .channel-name {
-    color: #2196f3;
+    &-content {
+      padding: 10px 25px !important;
+      height: 130px;
 
-    &:hover {
+      &__subtitle {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+
+    &-subtitle {
+      color: grey;
+    }
+
+    .channel-name {
       color: #2196f3;
+
+      &:hover {
+        color: #2196f3;
+      }
     }
   }
-}
 
-.channel-card {
-  border-bottom: 1px solid whitesmoke;
-  margin-bottom: 10px;
+  .channel-card {
+    margin-bottom: 30px;
+    height: 125px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
 
-  &__thumbnail {
-    height: 100px;
-    width: 100px;
-    border-radius: 50%;
+    .row {
+      width: 100%;
+    }
 
-    &-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    &__thumbnail {
+      height: 100px;
+      width: 100px;
+      border-radius: 50%;
+
+      &-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
     }
   }
 }
@@ -39,5 +63,6 @@
 .data-empty,
 .loading-img {
   height: 170px;
-  margin-top: 50px;
+  margin-top: 90px;
+  border-radius: 5px;
 }
