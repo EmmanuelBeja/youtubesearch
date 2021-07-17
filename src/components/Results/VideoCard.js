@@ -1,19 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { Row, Col } from 'reactstrap'
-import { Card, CardMedia, Chip } from 'ui-neumorphism'
+import { Card, CardMedia, Chip, Dialog } from 'ui-neumorphism'
 import { faClock, faUser } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import YouTubeIframe from './YouTubeIframe'
 
 const VideoCard = ({ data, handleRedirectToChannel }) => {
   const { snippet, id } = data
-
-  const handleRedirectToVideo = () => window.open(`https://www.youtube.com/watch?v=${id.videoId}`)
+  const [showModal, setShowModal] = useState(false)
 
   const publishTime = new Date(snippet.publishTime).toLocaleString()
 
   return (
-    <Col md="4" sm="6" xs="12" onMouseDown={() => handleRedirectToVideo()}>
+    <Col md="4" sm="6" xs="12" onMouseDown={() => setShowModal(true)}>
       <Card className="card" elevation={4}>
         <Row>
           <Col md="12" sm="12" xs="12" className="">
@@ -42,6 +42,12 @@ const VideoCard = ({ data, handleRedirectToChannel }) => {
           </Col>
         </Row>
       </Card>
+
+      <Dialog visible={showModal} onClose={() => setShowModal(false)} className="dialog">
+        <Card className="dialog-card">
+          <YouTubeIframe embedId={id.videoId} width={800} height={500} />
+        </Card>
+      </Dialog>
     </Col>
   )
 }

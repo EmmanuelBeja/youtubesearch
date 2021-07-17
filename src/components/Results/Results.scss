@@ -66,3 +66,13 @@
   margin-top: 90px;
   border-radius: 5px;
 }
+
+.dialog {
+  &-card {
+    padding: 5px 5px 0px 5px;
+
+    iframe {
+      border-radius: 5px;
+    }
+  }
+}
