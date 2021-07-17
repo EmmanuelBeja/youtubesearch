@@ -40,7 +40,7 @@ const Search = () => {
     dispatch(searchActions.getSearchResults(input))
     setInputError(false)
   }
-  // {{ size: 6, offset: 3 }}
+
   return (
     <Navbar color="light" light expand="md" className="fixed-top">
       <div className="search-section">
