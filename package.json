@@ -74,8 +74,14 @@
     "eject": "react-scripts eject",
     "lint": "npm run lint:js && npm run lint:styles",
     "lint:js": "eslint \"**/*.js\" --fix",
-    "lint:styles": "stylelint \"**/*.{css,scss,sass}\" --fix"
+    "lint:styles": "stylelint \"**/*.{css,scss,sass}\" --fix",
+    "size": "yarn build && size-limit"
   },
+  "size-limit": [
+    {
+      "path": "build/static/**/*.{js,css,svg,woff,woff2,png,ttf,html}"
+    }
+  ],
   "eslintConfig": {
     "extends": [
       "react-app",
