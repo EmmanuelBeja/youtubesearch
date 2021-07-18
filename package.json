@@ -28,6 +28,7 @@
     "web-vitals": "^1.0.1"
   },
   "devDependencies": {
+    "@size-limit/file": "^5.0.1",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.6.2",
     "case-sensitive-paths-webpack-plugin": "^2.4.0",
     "enzyme": "^3.11.0",
@@ -46,6 +47,7 @@
     "npm": "^7.19.1",
     "prettier": "2.0.5",
     "redux-devtools-extension": "^2.13.8",
+    "size-limit": "^5.0.1",
     "stylelint": "13.6.1",
     "stylelint-config-prettier": "8.0.2",
     "stylelint-config-standard": "20.0.0",
@@ -79,6 +81,7 @@
   },
   "size-limit": [
     {
+      "limit": "180 kB",
       "path": "build/static/**/*.{js,css,svg,woff,woff2,png,ttf,html}"
     }
   ],
