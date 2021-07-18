@@ -12,11 +12,11 @@ exports[`App should render correctly 1`] = `
     }
   }
 >
+  <Search />
   <Container
     className="app-container"
     tag="div"
   >
-    <Search />
     <Results />
   </Container>
   <ToastContainer

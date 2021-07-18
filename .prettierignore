@@ -2,6 +2,7 @@
 .cache
 .design
 .vscode
+build
 public
 node_modules
 package-lock.json
