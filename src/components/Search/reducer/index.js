@@ -14,8 +14,6 @@ const searchReducer = (state = initialState, action) => {
       return {
         ...state,
         results: [],
-        pageInfo: undefined,
-        regionCode: undefined,
         loading: true,
       }
 
