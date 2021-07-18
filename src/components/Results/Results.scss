@@ -19,18 +19,21 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-      }
-    }
+        padding: 5px 0px;
 
-    &-subtitle {
-      color: grey;
-    }
+        .channel-name {
+          color: #2196f3;
 
-    .channel-name {
-      color: #2196f3;
+          &:hover {
+            color: #2196f3;
+          }
+        }
 
-      &:hover {
-        color: #2196f3;
+        i {
+          padding-left: 5px;
+          font-size: 12px;
+          color: grey;
+        }
       }
     }
   }
@@ -56,6 +59,11 @@
         justify-content: center;
         align-items: center;
       }
+    }
+
+    @media only screen and (max-width: 576px) {
+      height: 250px;
+      text-align: center;
     }
   }
 }

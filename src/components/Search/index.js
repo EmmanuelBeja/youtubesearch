@@ -21,6 +21,7 @@ const Search = () => {
   const [debouncedText] = useDebounce(debouncingText, 2000)
   const [inputError, setInputError] = useState(false)
   const [searches, setSearches] = useState([])
+  const [showPrevSearches, setShowPrevSearches] = useState(false)
 
   useEffect(() => {
     debouncedText && handleSearch(debouncedText)
@@ -61,10 +62,13 @@ const Search = () => {
               setDebouncingText(e.target.value)
               setSearchInput(e.target.value)
             }}
+            onFocus={() => setShowPrevSearches(true)}
+            onBlur={() => setShowPrevSearches(false)}
             invalid={inputError}
             autoComplete="off"
           />
-          <RecentSearches searches={searches} handleClick={handleSearch} />
+
+          {showPrevSearches && <RecentSearches searches={searches} handleClick={handleSearch} />}
         </InputGroup>
       </div>
     </Navbar>
@@ -72,37 +76,3 @@ const Search = () => {
 }
 
 export default Search
-
-// <Row>
-//   <Col
-//     lg="12"
-//     md="12"
-//     sm="12"
-//     xs="12"
-//     className="search-section shadow"
-//   >
-//     <InputGroup>
-//       <InputGroupAddon addonType="prepend">
-//         {loading ? (
-//           <FontAwesomeIcon icon={faCircleNotch} pulse />
-//         ) : (
-//           <FontAwesomeIcon icon={faSearch} />
-//         )}
-//       </InputGroupAddon>
-//       <Input
-//         className="form-control"
-//         name="searchInput"
-//         placeholder="Type here..."
-//         value={searchInput}
-//         onChange={(e) => {
-//           setDebouncingText(e.target.value)
-//           setSearchInput(e.target.value)
-//         }}
-//         invalid={inputError}
-//         autoComplete="off"
-//       />
-//
-//       <RecentSearches searches={searches} handleClick={handleSearch} />
-//     </InputGroup>
-//   </Col>
-// </Row>
