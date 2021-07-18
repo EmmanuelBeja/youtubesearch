@@ -10,17 +10,25 @@
     width: 100%;
 
     .input-group {
-      width: 50%;
+      width: 30%;
       transition: all 0.4s;
       border: 1px solid #ced4da;
       border-radius: 5px;
 
       &:focus-within {
-        width: 55%;
+        width: 35%;
 
         .autocomplete {
           display: block;
           transition: all 9s;
+        }
+      }
+
+      @media only screen and (max-width: 576px) {
+        width: 98%;
+
+        &:focus-within {
+          width: 100%;
         }
       }
 
@@ -38,6 +46,7 @@
         left: 0;
         top: 50px;
         right: 0;
+        border-radius: 5px;
       }
 
       .autocomplete {
