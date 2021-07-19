@@ -1,8 +1,8 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import SearchInput from './SearchInput'
+import SearchInput from '../SearchInput'
 import { Provider } from 'react-redux'
-import store from '../../store'
+import store from '../../../store'
 
 describe('SearchInput', () => {
   const wrapper = mount(
