@@ -50,7 +50,6 @@ const SearchInput = () => {
         )}
       </InputGroupAddon>
       <Input
-        className="form-control"
         name="searchInput"
         placeholder="Type here..."
         value={searchInput}
@@ -62,6 +61,7 @@ const SearchInput = () => {
         onBlur={() => setShowPrevSearches(false)}
         invalid={inputError}
         autoComplete="off"
+        disabled={loading}
       />
       {showPrevSearches && <RecentSearches searches={searches} handleClick={handleSearch} />}
     </InputGroup>

@@ -15,7 +15,9 @@ const RecentSearches = ({ searches, handleClick }) => {
   }
 
   return (
-    <div className={searches.length === 0 || loading ? 'd-none' : 'search__autocomplete'}>
+    <div
+      className={searches.length === 0 || loading ? 'd-none recent' : 'search__autocomplete recent'}
+    >
       <div className="autocomplete">
         <div className="autocomplete__info">RECENT SEARCHES</div>
         {listItems()}

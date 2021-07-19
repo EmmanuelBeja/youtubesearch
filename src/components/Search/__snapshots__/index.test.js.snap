@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search should render correctly 1`] = `
+<Navbar
+  className="fixed-top"
+  color="light"
+  expand="md"
+  light={true}
+  tag="nav"
+>
+  <div
+    className="search-section"
+  >
+    <SearchInput />
+  </div>
+</Navbar>
+`;
