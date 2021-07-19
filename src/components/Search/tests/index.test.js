@@ -1,9 +1,9 @@
 import React from 'react'
 import { shallow, mount } from 'enzyme'
-import Search from './'
-import SearchInput from './SearchInput'
+import Search from '../'
+import SearchInput from '../SearchInput'
 import { Provider } from 'react-redux'
-import store from '../../store'
+import store from '../../../store'
 
 describe('Search', () => {
   const shallowWrapper = shallow(<Search />)

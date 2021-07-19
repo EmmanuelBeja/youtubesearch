@@ -1,8 +1,8 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import RecentSearches from './RecentSearches'
+import RecentSearches from '../RecentSearches'
 import { Provider } from 'react-redux'
-import store from '../../store'
+import store from '../../../store'
 
 describe('RecentSearches', () => {
   it('should render without crashing', () => {
