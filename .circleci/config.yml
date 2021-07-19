@@ -26,7 +26,7 @@ jobs:
 
       - run: yarn size
 
-      - run: yarn test
+      - run: yarn test --ci --coverage --watchAll=false
 
       - codecov/upload:
-          file: coverage
+          file: ../coverage/*.json
