@@ -10,6 +10,7 @@ const YouTubeIframe = ({ width, height, embedId }) => {
       src={srcValue}
       frameBorder="0"
       title="Embedded youtube video"
+      className="iframe"
     />
   )
 }

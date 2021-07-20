@@ -12,10 +12,6 @@ import './Results.scss'
 const Results = () => {
   const { loading, results } = useSelector((state) => state.search)
 
-  // if (loading) {
-  //   return <Loading />
-  // }
-
   const handleRedirectToChannel = (channelId) =>
     window.open(`https://www.youtube.com/channel/${channelId}`)
 

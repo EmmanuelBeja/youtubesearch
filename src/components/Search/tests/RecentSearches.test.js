@@ -49,4 +49,15 @@ describe('RecentSearches', () => {
     )
     expect(wrapper.find('.autocomplete__item').length).toEqual(2)
   })
+
+  it('should call handleSearch on mousedown', () => {
+    const handleSearch = jest.fn()
+    const wrapper = mount(
+      <Provider store={store}>
+        <RecentSearches searches={['hello']} handleClick={handleSearch} />
+      </Provider>
+    )
+    wrapper.find('.autocomplete__item').simulate('mousedown')
+    expect(handleSearch).toHaveBeenCalled()
+  })
 })

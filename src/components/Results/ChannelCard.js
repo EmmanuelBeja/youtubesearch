@@ -9,6 +9,7 @@ const ChannelCard = ({ data, handleRedirectToChannel }) => {
       md="12"
       sm="12"
       xs="12"
+      className="channel-card-container"
       onMouseDown={() => handleRedirectToChannel(data.snippet.channelId)}
     >
       <Card className="channel-card" elevation={4}>
