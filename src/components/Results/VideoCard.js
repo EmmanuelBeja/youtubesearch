@@ -37,7 +37,7 @@ const VideoCard = ({ data, handleRedirectToChannel }) => {
   const publishTime = moment(snippet.publishTime).format('dddd MM YYYY')
 
   return (
-    <Col md="4" sm="6" xs="12" onMouseDown={() => setShowModal(true)}>
+    <Col md="4" sm="6" xs="12" className="video-card" onMouseDown={() => setShowModal(true)}>
       <Card className="card" elevation={4}>
         <Row>
           <Col md="12" sm="12" xs="12" className="">
@@ -55,7 +55,7 @@ const VideoCard = ({ data, handleRedirectToChannel }) => {
               className="text-truncate card-content__subtitle"
               onMouseDown={() => handleRedirectToChannel(snippet.channelId)}
             >
-              <Chip key="5" className="ma-3" prepend={<FontAwesomeIcon icon={faUser} />}>
+              <Chip prepend={<FontAwesomeIcon icon={faUser} key={id.videoId} />}>
                 <span className="channel-name">{snippet.channelTitle}</span>
               </Chip>
               <i>

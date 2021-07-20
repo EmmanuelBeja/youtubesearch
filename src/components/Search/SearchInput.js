@@ -5,7 +5,6 @@ import { InputGroup, InputGroupAddon, Input } from 'reactstrap'
 import { useDebounce } from 'use-debounce'
 import { faSearch, faCircleNotch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { toast } from 'react-toastify'
 import RecentSearches from './RecentSearches'
 
 import { searchActions } from './actions'
@@ -17,7 +16,6 @@ const SearchInput = () => {
   const [searchInput, setSearchInput] = useState('')
   const [debouncingText, setDebouncingText] = useState('')
   const [debouncedText] = useDebounce(debouncingText, 2000)
-  const [inputError, setInputError] = useState(false)
   const [searches, setSearches] = useState([])
   const [showPrevSearches, setShowPrevSearches] = useState(false)
 
@@ -26,18 +24,9 @@ const SearchInput = () => {
   }, [debouncedText])
 
   const handleSearch = (input) => {
-    if (!input) {
-      setInputError(true)
-      toast.error('Please type something to search')
-      return
-    }
     // add searched item to recent searches
-    const updatedSearches = searches
-    updatedSearches.push(input)
-
-    setSearches(updatedSearches)
+    setSearches((prevState) => [...prevState, input])
     dispatch(searchActions.getSearchResults(input))
-    setInputError(false)
   }
 
   return (
@@ -59,7 +48,6 @@ const SearchInput = () => {
         }}
         onFocus={() => setShowPrevSearches(true)}
         onBlur={() => setShowPrevSearches(false)}
-        invalid={inputError}
         autoComplete="off"
         disabled={loading}
       />

@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loading should render correctly 1`] = `
+<div
+  className="text-center loading-container"
+>
+  <img
+    alt="loading"
+    className="loading-img"
+    src="/sync.svg"
+  />
+  <br />
+  <br />
+  <p>
+    Loading...
+  </p>
+</div>
+`;
